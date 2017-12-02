@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Planet : MonoBehaviour {
 
+    public Transform Sun;
+
 	// Use this for initialization
 	void Start () {
 		
