@@ -59,6 +59,16 @@ public class Planet : MonoBehaviour {
         gc.instance.PlanetClicked(gameObject);
     }
 
+    void OnMouseEnter()
+    {
+        GameCanvas.instance.ShowPlanetStats(GetComponent<Population>().GetPopulationString() , true,GetComponent<Population>().Population_Grew_per_sec);
+    }
+
+    void OnMouseExit()
+    {
+        GameCanvas.instance.HidePlanetStats();
+    }
+
     void OnTriggerEnter(Collider other)
     {
         gc.instance.PlanetCollided(gameObject,other.gameObject);

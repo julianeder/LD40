@@ -34,15 +34,9 @@ public class PopulationVisiualizer : MonoBehaviour {
         transform.LookAt(mainCam);
         transform.Rotate(Vector3.up, 180f);
 
-        if (population.population < 1000)
-        {
-            pop_text.text = Convert.ToInt32(population.population).ToString() + " Mio.";
-        }
-        else
-        {
-            pop_text.text = (population.population / 1000).ToString("F1") + " Mrd.";
-
-        }
+      
+        pop_text.text = population.GetPopulationString();
+       
         img_act.anchoredPosition = new Vector2((population.population / population.pop_max) * panel_pop_crit.rect.width, img_act.anchoredPosition.y);
 
 

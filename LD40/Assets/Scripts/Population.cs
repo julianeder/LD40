@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -31,4 +32,22 @@ public class Population : MonoBehaviour {
 
 
 	}
+
+    public string GetPopulationString()
+    {
+        if (population <= 0)
+        {
+            return "none";
+        }
+        else if (population < 1000)
+        {
+            return Convert.ToInt32(population).ToString() + " Mio.";
+
+        }
+        else
+        {
+            return (population / 1000).ToString("F1") + " Mrd.";
+
+        }
+    }
 }
