@@ -57,15 +57,15 @@ public class GameCanvas : MonoBehaviour {
 
 
 
-    public void ShowPlanetStats(string population,bool isHabitable,float growth)
+    public void ShowPlanetStats(string planetName,string population,string isHabitable,string growth)
     {
         panelPlanetstats.SetActive(true);
 
-        TextPlanetName.text = "Planet";
+        TextPlanetName.text = planetName;
         TextPlanetstatsPopulation.text = "Population: " + population;
 
-        TextPlanetstatsHabitable.text = "Is habitable: "+ isHabitable.ToString();
-        TextPlanetstatsGrowth.text = "Population Growth: " + growth.ToString();
+        TextPlanetstatsHabitable.text = "Is habitable: "+ isHabitable;
+        TextPlanetstatsGrowth.text = "Population Growth: " + growth;
     }
     public void HidePlanetStats()
     {

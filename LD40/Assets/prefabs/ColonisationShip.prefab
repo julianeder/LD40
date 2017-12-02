@@ -125,8 +125,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destination: {fileID: 0}
-  speed: 3
+  speed: 5
   shipType: 0
+  population: 0
 --- !u!135 &135768780881851940
 SphereCollider:
   m_ObjectHideFlags: 1

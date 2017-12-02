@@ -7,6 +7,8 @@ public class Population : MonoBehaviour {
 
     public static List<Population> instances = new List<Population>();
 
+    public bool isHabitable = false;
+
     public float population = 7000;
 
     public float Population_Grew_per_sec = 1f;
@@ -16,6 +18,7 @@ public class Population : MonoBehaviour {
     public float pop_crit = 8000;
     public float pop_max = 15000;
 
+    private bool overcrit = false;
 
     // Use this for initialization
     void Start () {
@@ -25,16 +28,30 @@ public class Population : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        if((t-= Time.deltaTime) < 0)
+        if (isHabitable)
         {
-            t = 1;
-            population = population * Population_Grew_per_sec;
-        }
+            if ((t -= Time.deltaTime) < 0)
+            {
+                t = 1;
+                population = population * Population_Grew_per_sec;
+            }
 
 
-        if(population >= pop_max)
-        {
-            gc.instance.Lose(gameObject);
+            if (population >= pop_max)
+            {
+                gc.instance.Lose(gameObject);
+            }
+
+            if(population >= pop_crit && !overcrit)
+            {
+                overcrit = true;
+                News.instance.nextNews = "Critical Population on " + GetComponent<Planet>().PlanetName;
+            }
+            if(population < pop_crit)
+            {
+                overcrit = false;
+            }
+
         }
 
 

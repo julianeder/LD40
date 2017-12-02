@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class Planet : MonoBehaviour {
 
+    public string PlanetName = "<name>";
+
     public Transform Sun;
     public float local_rotation_speed = 1f;
     public float local_orbit_speed = 1f;
@@ -25,6 +27,9 @@ public class Planet : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
+
+        Sun = GameObject.FindGameObjectWithTag("Sun").transform;
+
 
         if (isExplored)
         {
@@ -51,7 +56,17 @@ public class Planet : MonoBehaviour {
         transform.RotateAround(Sun.position, Vector3.up, Time.deltaTime * local_rotation_speed * global_orbit_speed);
         transform.Rotate(transform.up, Time.deltaTime * local_rotation_speed);
 
-	}
+
+        if (isExplored)
+        {
+            GetComponentInChildren<PopulationVisiualizer>().isActive = true;
+        }
+        else
+        {
+            GetComponentInChildren<PopulationVisiualizer>().isActive = false;
+        }
+
+    }
 
 
     void OnMouseDown()
@@ -62,7 +77,15 @@ public class Planet : MonoBehaviour {
     void OnMouseEnter()
     {
         Population pop = GetComponent<Population>();
-        GameCanvas.instance.ShowPlanetStats(Population.GetPopulationString(pop.population), true, pop.Population_Grew_per_sec);
+        if (isExplored)
+        {
+            GameCanvas.instance.ShowPlanetStats(PlanetName, Population.GetPopulationString(pop.population), GetComponent<Population>().isHabitable.ToString(), pop.Population_Grew_per_sec.ToString("F3"));
+        }
+        else
+        {
+            GameCanvas.instance.ShowPlanetStats("unknown Planet", "-", "-", "-");
+
+        }
     }
 
     void OnMouseExit()

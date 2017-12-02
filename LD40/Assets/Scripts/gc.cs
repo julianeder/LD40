@@ -89,12 +89,15 @@ public class gc : MonoBehaviour {
             if (other.GetComponent<Ship>().shipType == Ship.ShipType.exploration) {
 
                 planet.GetComponent<Planet>().Explore();
+                News.instance.nextNews = "Discovered Planet " + planet.GetComponent<Planet>().PlanetName;
 
             }
             else if (other.GetComponent<Ship>().shipType == Ship.ShipType.colony)
             {
                 planet.GetComponent<Planet>().isPopulated = true;
                 planet.GetComponent<Population>().population += other.GetComponent<Ship>().population;
+                News.instance.nextNews = "Colonized Planet " + planet.GetComponent<Planet>().PlanetName;
+
             }
             else if (other.GetComponent<Ship>().shipType == Ship.ShipType.transport)
             {
@@ -227,10 +230,19 @@ public class sendColonisationShipComand : Comand
         }
         else if (comandStatus == 1 && planet != startPlanet )
         {
+            if (planet.GetComponent<Planet>().isExplored && planet.GetComponent<Population>().isHabitable)
+            {
+                destinationPlanet = planet;
+                SendShip();
+                comandStatus = 0;
+            }
+            else
+            {
+                comandStatus = 1;
+                Debug.LogError("Unhabitable or Unexplored Planet");
 
-            destinationPlanet = planet;
-            SendShip();
-            comandStatus = 0;
+
+            }
         }
 
 
@@ -295,6 +307,7 @@ public class sendTransportationShipComand : Comand
             destinationPlanet = planet;
             SendShip();
             comandStatus = 0;
+
         }
 
 
