@@ -16,6 +16,8 @@ public class PopulationVisiualizer : MonoBehaviour {
     public RectTransform img_green;
     public RectTransform img_red;
 
+    public RectTransform img_act;
+
 
     // Use this for initialization
     void Start () {
@@ -34,5 +36,8 @@ public class PopulationVisiualizer : MonoBehaviour {
 
         pop_text.text = Convert.ToInt32(population.population).ToString();
 
-	}
+        img_act.anchoredPosition = new Vector2((population.population / population.pop_max) * panel_pop_crit.rect.width, img_act.anchoredPosition.y);
+
+
+    }
 }
