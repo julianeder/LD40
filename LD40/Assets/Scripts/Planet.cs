@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class Planet : MonoBehaviour {
 
+    public string PlanetName = "<name>";
+
     public Transform Sun;
     public float local_rotation_speed = 1f;
     public float local_orbit_speed = 1f;
@@ -75,7 +77,15 @@ public class Planet : MonoBehaviour {
     void OnMouseEnter()
     {
         Population pop = GetComponent<Population>();
-        GameCanvas.instance.ShowPlanetStats(Population.GetPopulationString(pop.population), true, pop.Population_Grew_per_sec);
+        if (isExplored)
+        {
+            GameCanvas.instance.ShowPlanetStats(PlanetName, Population.GetPopulationString(pop.population), GetComponent<Population>().isHabitable.ToString(), pop.Population_Grew_per_sec.ToString("F3"));
+        }
+        else
+        {
+            GameCanvas.instance.ShowPlanetStats("unknown Planet", "-", "-", "-");
+
+        }
     }
 
     void OnMouseExit()

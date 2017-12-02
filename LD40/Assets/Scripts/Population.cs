@@ -18,6 +18,7 @@ public class Population : MonoBehaviour {
     public float pop_crit = 8000;
     public float pop_max = 15000;
 
+    private bool overcrit = false;
 
     // Use this for initialization
     void Start () {
@@ -40,6 +41,17 @@ public class Population : MonoBehaviour {
             {
                 gc.instance.Lose(gameObject);
             }
+
+            if(population >= pop_crit && !overcrit)
+            {
+                overcrit = true;
+                News.instance.nextNews = "Critical Population on " + GetComponent<Planet>().PlanetName;
+            }
+            if(population < pop_crit)
+            {
+                overcrit = false;
+            }
+
         }
 
 

@@ -89,12 +89,15 @@ public class gc : MonoBehaviour {
             if (other.GetComponent<Ship>().shipType == Ship.ShipType.exploration) {
 
                 planet.GetComponent<Planet>().Explore();
+                News.instance.nextNews = "Discovered Planet " + planet.GetComponent<Planet>().PlanetName;
 
             }
             else if (other.GetComponent<Ship>().shipType == Ship.ShipType.colony)
             {
                 planet.GetComponent<Planet>().isPopulated = true;
                 planet.GetComponent<Population>().population += other.GetComponent<Ship>().population;
+                News.instance.nextNews = "Colonized Planet " + planet.GetComponent<Planet>().PlanetName;
+
             }
             else if (other.GetComponent<Ship>().shipType == Ship.ShipType.transport)
             {

@@ -9,10 +9,13 @@ public class SunSystemGenerator : MonoBehaviour {
     public float probapilityHabitable = 0.5f;
 
     public GameObject prefab_planet;
-    public List<GameObject> planets = new List<GameObject>();
 
     public List<Color> waterColor = new List<Color>();
     public List<Color> mountainColor = new List<Color>();
+    public List<string> planetNames = new List<string>();
+
+    private List<GameObject> planets = new List<GameObject>();
+
 
     // Use this for initialization
     void Start () {
@@ -59,6 +62,8 @@ public class SunSystemGenerator : MonoBehaviour {
 
             planet.transform.Find("explored").Find("expl_mountain").GetComponent<MeshRenderer>().material.color = mountainColor[Random.Range(0,mountainColor.Count)];
             planet.transform.Find("explored").Find("expl_water").GetComponent<MeshRenderer>().material.color = waterColor[Random.Range(0, mountainColor.Count)];
+
+            planet.GetComponent<Planet>().PlanetName = planetNames[Random.Range(0, planetNames.Count)] +"-"+ Random.Range(1,100).ToString();
 
             planets.Add(planet);
 
