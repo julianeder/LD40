@@ -260,7 +260,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 787917400}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b93225924160a7841bd70fcdb6156db5, type: 3}
   m_Name: 
@@ -301,38 +301,38 @@ LineRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Positions:
-  - {x: 5.7700005, y: 0, z: 6.68}
-  - {x: 4.3559284, y: 0, z: 7.6773167}
-  - {x: 2.7744594, y: 0, z: 8.379599}
-  - {x: 1.0863706, y: 0, z: 8.759857}
-  - {x: -0.64346665, y: 0, z: 8.803479}
-  - {x: -2.348577, y: 0, z: 8.508789}
-  - {x: -3.9634316, y: 0, z: 7.88711}
-  - {x: -5.4259753, y: 0, z: 6.9623337}
-  - {x: -6.6799994, y: 0, z: 5.770001}
-  - {x: -7.6773167, y: 0, z: 4.355928}
-  - {x: -8.379599, y: 0, z: 2.7744591}
-  - {x: -8.759857, y: 0, z: 1.0863713}
-  - {x: -8.803479, y: 0, z: -0.64346707}
-  - {x: -8.508788, y: 0, z: -2.3485773}
-  - {x: -7.8871107, y: 0, z: -3.9634311}
-  - {x: -6.962334, y: 0, z: -5.425975}
-  - {x: -5.77, y: 0, z: -6.6800003}
-  - {x: -4.3559284, y: 0, z: -7.6773167}
-  - {x: -2.7744596, y: 0, z: -8.379599}
-  - {x: -1.0863699, y: 0, z: -8.759857}
-  - {x: 0.6434685, y: 0, z: -8.803479}
-  - {x: 2.3485746, y: 0, z: -8.508789}
-  - {x: 3.9634306, y: 0, z: -7.8871107}
-  - {x: 5.425974, y: 0, z: -6.962335}
-  - {x: 6.68, y: 0, z: -5.77}
-  - {x: 7.677317, y: 0, z: -4.355927}
-  - {x: 8.3796, y: 0, z: -2.7744582}
-  - {x: 8.759857, y: 0, z: -1.0863726}
-  - {x: 8.803479, y: 0, z: 0.64346576}
-  - {x: 8.508789, y: 0, z: 2.348576}
-  - {x: 7.88711, y: 0, z: 3.963432}
-  - {x: 6.9623337, y: 0, z: 5.4259753}
+  - {x: 6.45, y: 0, z: 6.2500005}
+  - {x: 5.10675, y: 0, z: 7.388241}
+  - {x: 3.5672514, y: 0, z: 8.242556}
+  - {x: 1.8906653, y: 0, z: 8.780113}
+  - {x: 0.14142188, y: 0, z: 8.980256}
+  - {x: -1.6132573, y: 0, z: 8.835293}
+  - {x: -3.305939, y: 0, z: 8.350795}
+  - {x: -4.871576, y: 0, z: 7.5453796}
+  - {x: -6.2499995, y: 0, z: 6.450001}
+  - {x: -7.388241, y: 0, z: 5.106751}
+  - {x: -8.242556, y: 0, z: 3.5672512}
+  - {x: -8.780113, y: 0, z: 1.8906659}
+  - {x: -8.980256, y: 0, z: 0.1414215}
+  - {x: -8.835293, y: 0, z: -1.6132578}
+  - {x: -8.350795, y: 0, z: -3.3059382}
+  - {x: -7.54538, y: 0, z: -4.8715754}
+  - {x: -6.45, y: 0, z: -6.2500005}
+  - {x: -5.1067514, y: 0, z: -7.3882403}
+  - {x: -3.5672517, y: 0, z: -8.242556}
+  - {x: -1.8906646, y: 0, z: -8.780114}
+  - {x: -0.14142002, y: 0, z: -8.980256}
+  - {x: 1.6132549, y: 0, z: -8.835294}
+  - {x: 3.3059378, y: 0, z: -8.350795}
+  - {x: 4.871575, y: 0, z: -7.5453806}
+  - {x: 6.25, y: 0, z: -6.4500003}
+  - {x: 7.3882413, y: 0, z: -5.10675}
+  - {x: 8.242556, y: 0, z: -3.5672505}
+  - {x: 8.780113, y: 0, z: -1.8906673}
+  - {x: 8.980256, y: 0, z: -0.14142285}
+  - {x: 8.835294, y: 0, z: 1.6132565}
+  - {x: 8.350795, y: 0, z: 3.3059392}
+  - {x: 7.5453796, y: 0, z: 4.871576}
   m_Parameters:
     serializedVersion: 2
     widthMultiplier: 0.1
@@ -384,6 +384,21 @@ LineRenderer:
     generateLightingData: 0
   m_UseWorldSpace: 1
   m_Loop: 1
+--- !u!114 &787917405
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 787917400}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c4c4592dbbc2a643898efc9be7a77ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Sun: {fileID: 1304474524}
+  local_rotation_speed: 1
+  lr_res: 0.2
+  lr_max_points: 300
 --- !u!1 &953392407
 GameObject:
   m_ObjectHideFlags: 0
@@ -488,7 +503,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 400004, guid: cfcef9cb9cba08c4fb45798c3b68de4d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5.77
+      value: 6.45
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: cfcef9cb9cba08c4fb45798c3b68de4d, type: 3}
       propertyPath: m_LocalPosition.y
@@ -496,7 +511,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: cfcef9cb9cba08c4fb45798c3b68de4d, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 6.68
+      value: 6.25
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: cfcef9cb9cba08c4fb45798c3b68de4d, type: 3}
       propertyPath: m_LocalRotation.x
