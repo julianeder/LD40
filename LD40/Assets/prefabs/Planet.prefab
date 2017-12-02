@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 33472494421923498}
   - component: {fileID: 23205104329398542}
   m_Layer: 0
-  m_Name: Icosphere_001
+  m_Name: unexpl_water
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -61,7 +61,7 @@ GameObject:
   - component: {fileID: 120839503321561156}
   m_Layer: 0
   m_Name: Planet
-  m_TagString: Sun
+  m_TagString: Planet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -77,7 +77,7 @@ GameObject:
   - component: {fileID: 33578120798468252}
   - component: {fileID: 23112071367782708}
   m_Layer: 0
-  m_Name: Icosphere
+  m_Name: expl_mountain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 33357644503672484}
   - component: {fileID: 23415651998079916}
   m_Layer: 0
-  m_Name: Icosphere
+  m_Name: unexpl_mountain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -128,7 +128,7 @@ GameObject:
   - component: {fileID: 33124151892242110}
   - component: {fileID: 23516467204512980}
   m_Layer: 0
-  m_Name: Icosphere_001
+  m_Name: expl_water
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -148,7 +148,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1827016866711592
 GameObject:
   m_ObjectHideFlags: 1
@@ -233,7 +233,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &4055088592696102
 Transform:
   m_ObjectHideFlags: 1
@@ -323,7 +323,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1533742171177508}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 7, y: 0, z: 0.64}
+  m_LocalPosition: {x: 7, y: 0, z: 7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4055088592696102}
@@ -537,8 +537,8 @@ MonoBehaviour:
   Sun: {fileID: 0}
   local_rotation_speed: 5
   local_orbit_speed: 1
-  isExplored: 1
-  isPopulated: 1
+  isExplored: 0
+  isPopulated: 0
   unexploredGeonometry: {fileID: 1964215851339578}
   exploredGeonometry: {fileID: 1825553377609162}
 --- !u!114 &114153616346353042
@@ -552,8 +552,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77cd580f55bad6d448976c154459ae31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  population: 7000
-  Population_Grew_per_sec: 1.001
+  population: 0
+  Population_Grew_per_sec: 1
   pop_crit: 8000
   pop_max: 10000
 --- !u!114 &114191497660949666

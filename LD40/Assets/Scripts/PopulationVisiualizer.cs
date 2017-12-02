@@ -22,6 +22,8 @@ public class PopulationVisiualizer : MonoBehaviour {
     // Use this for initialization
     void Start () {
 
+        mainCam = Camera.main.transform;
+
         img_green.sizeDelta = new Vector2((population.pop_crit / population.pop_max) * panel_pop_crit.rect.width, img_green.sizeDelta.y);
 
         img_red.sizeDelta = new Vector2((1-(population.pop_crit / population.pop_max)) * panel_pop_crit.rect.width, img_red.sizeDelta.y);

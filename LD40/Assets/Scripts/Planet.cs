@@ -26,6 +26,9 @@ public class Planet : MonoBehaviour {
     // Use this for initialization
     void Start () {
 
+        Sun = GameObject.FindGameObjectWithTag("Sun").transform;
+
+
         if (isExplored)
         {
             exploredGeonometry.SetActive(true);
