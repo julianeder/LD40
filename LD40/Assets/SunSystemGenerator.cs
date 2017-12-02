@@ -6,6 +6,7 @@ public class SunSystemGenerator : MonoBehaviour {
 
     public int seed;
     public int planetCount = 9;
+    public float probapilityHabitable = 0.5f;
 
     public GameObject prefab_planet;
     public List<GameObject> planets = new List<GameObject>();
@@ -45,7 +46,16 @@ public class SunSystemGenerator : MonoBehaviour {
 
             planet.GetComponent<Planet>().local_rotation_speed = (1 / size) * 3f;
 
-            planet.GetComponent<Population>().Population_Grew_per_sec = Random.Range(0.999f, 1.02f);
+            if(Random.value < probapilityHabitable)
+            {
+                planet.GetComponent<Population>().isHabitable = true;
+            }
+            else
+            {
+                planet.GetComponent<Population>().isHabitable = false;
+            }
+
+            planet.GetComponent<Population>().Population_Grew_per_sec = Random.Range(0.999f, 1.005f);
 
             planet.transform.Find("explored").Find("expl_mountain").GetComponent<MeshRenderer>().material.color = mountainColor[Random.Range(0,mountainColor.Count)];
             planet.transform.Find("explored").Find("expl_water").GetComponent<MeshRenderer>().material.color = waterColor[Random.Range(0, mountainColor.Count)];
@@ -53,8 +63,12 @@ public class SunSystemGenerator : MonoBehaviour {
             planets.Add(planet);
 
         }
+        int index = 0;
+        do
+        {
+            index = Random.Range(0, planetCount);
+        } while (!planets[index].GetComponent<Population>().isHabitable);
 
-        int index = Random.Range(0, planetCount);
         planets[index].GetComponent<Planet>().isExplored = true;
         planets[index].GetComponent<Planet>().isPopulated = true;
         planets[index].GetComponent<Population>().population = 7000;

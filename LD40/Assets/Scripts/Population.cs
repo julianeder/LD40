@@ -7,6 +7,8 @@ public class Population : MonoBehaviour {
 
     public static List<Population> instances = new List<Population>();
 
+    public bool isHabitable = false;
+
     public float population = 7000;
 
     public float Population_Grew_per_sec = 1f;
@@ -25,16 +27,19 @@ public class Population : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        if((t-= Time.deltaTime) < 0)
+        if (isHabitable)
         {
-            t = 1;
-            population = population * Population_Grew_per_sec;
-        }
+            if ((t -= Time.deltaTime) < 0)
+            {
+                t = 1;
+                population = population * Population_Grew_per_sec;
+            }
 
 
-        if(population >= pop_max)
-        {
-            gc.instance.Lose(gameObject);
+            if (population >= pop_max)
+            {
+                gc.instance.Lose(gameObject);
+            }
         }
 
 
