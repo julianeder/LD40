@@ -56,15 +56,16 @@ public class Planet : MonoBehaviour {
         transform.RotateAround(Sun.position, Vector3.up, Time.deltaTime * local_rotation_speed * global_orbit_speed);
         transform.Rotate(transform.up, Time.deltaTime * local_rotation_speed);
 
-
-        if (isExplored)
-        {
-            GetComponentInChildren<PopulationVisiualizer>().isActive = true;
-        }
-        else
-        {
-            GetComponentInChildren<PopulationVisiualizer>().isActive = false;
-        }
+        try {
+            if (isExplored)
+            {
+                GetComponentInChildren<PopulationVisiualizer>().isActive = true;
+            }
+            else
+            {
+                GetComponentInChildren<PopulationVisiualizer>().isActive = false;
+            }
+        }catch(System.Exception ex) { }
 
     }
 
