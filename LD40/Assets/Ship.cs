@@ -9,6 +9,8 @@ public class Ship : MonoBehaviour {
 
     public ShipType shipType;
 
+    public int population;
+
 	// Use this for initialization
 	void Start () {
 		

@@ -7,20 +7,49 @@ public class Planet : MonoBehaviour {
 
     public Transform Sun;
     public float local_rotation_speed = 1f;
-
-    public static float global_rotation_speed = 5f;
-
+    public float local_orbit_speed = 1f;
 
 
-	// Use this for initialization
-	void Start () {
+    public static float global_orbit_speed = 1f;
+
+
+    public bool isExplored = false;
+    public bool isPopulated = false;
+
+
+
+    public GameObject unexploredGeonometry;
+    public GameObject exploredGeonometry;
+
+
+
+    // Use this for initialization
+    void Start () {
+
+        if (isExplored)
+        {
+            exploredGeonometry.SetActive(true);
+            unexploredGeonometry.SetActive(false);
+        }
+        else
+        {
+            exploredGeonometry.SetActive(false);
+            unexploredGeonometry.SetActive(true);
+        }
+
+        if(GetComponent<Population>().population > 0)
+        {
+            isPopulated = true;
+        }
+
+
 	}
 	
 	// Update is called once per frame
 	void Update () {
 
-        transform.RotateAround(Sun.position, Vector3.up, Time.deltaTime * local_rotation_speed * global_rotation_speed);
-
+        transform.RotateAround(Sun.position, Vector3.up, Time.deltaTime * local_rotation_speed * global_orbit_speed);
+        transform.Rotate(transform.up, Time.deltaTime * local_rotation_speed);
 
 	}
 
@@ -38,6 +67,12 @@ public class Planet : MonoBehaviour {
 
     public void Explore()
     {
-        throw new NotImplementedException();
+        isExplored = true;
+        exploredGeonometry.SetActive(true);
+        unexploredGeonometry.SetActive(false);
     }
+
+
+
+
 }

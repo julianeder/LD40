@@ -26,6 +26,10 @@ public class gc : MonoBehaviour {
 
 
     public GameObject prefabExplorationShip;
+    public GameObject prefabColonisationShip;
+    public GameObject prefabTransportShip;
+
+
 
     // Use this for initialization
     void Start () {
@@ -41,8 +45,20 @@ public class gc : MonoBehaviour {
             selectedComand = new sendExplorationShipComand();
         }
 
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            Debug.Log("C");
+            selectedComand = new sendColonisationShipComand();
+        }
 
-	}
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            Debug.Log("T");
+            selectedComand = new sendTransportationShipComand();
+        }
+
+
+    }
 
     public void PlanetCollided(GameObject planet, GameObject other)
     {
@@ -54,6 +70,18 @@ public class gc : MonoBehaviour {
                 planet.GetComponent<Planet>().Explore();
 
             }
+            else if (other.GetComponent<Ship>().shipType == Ship.ShipType.colony)
+            {
+                planet.GetComponent<Planet>().isPopulated = true;
+                planet.GetComponent<Population>().population += other.GetComponent<Ship>().population;
+            }
+            else if (other.GetComponent<Ship>().shipType == Ship.ShipType.transport)
+            {
+                planet.GetComponent<Population>().population += other.GetComponent<Ship>().population;
+            }
+
+
+
             Destroy(other);
 
         }
@@ -104,8 +132,11 @@ public class sendExplorationShipComand : Comand
 
         if (comandStatus == 0)
         {
-            startPlanet = planet;
-            comandStatus = 1;
+            if (planet.GetComponent<Planet>().isExplored)
+            {
+                startPlanet = planet;
+                comandStatus = 1;
+            }
         }
         else if (comandStatus == 1 && planet == startPlanet)
         {
@@ -129,6 +160,129 @@ public class sendExplorationShipComand : Comand
         ship =  gc.instance.InstantiateShip(gc.instance.prefabExplorationShip, startPlanet.transform.position, startPlanet.transform.rotation);
         ship.GetComponent<Ship>().destination = destinationPlanet;
         ship.GetComponent<Ship>().shipType = Ship.ShipType.exploration;
+
+    }
+}
+
+
+[System.Serializable]
+public class sendColonisationShipComand : Comand
+{
+    GameObject startPlanet;
+    GameObject destinationPlanet;
+
+    GameObject ship;
+
+    public sendColonisationShipComand()
+    {
+
+    }
+
+
+
+    public override void PlanetClicked(GameObject planet)
+    {
+
+        if (comandStatus == 0)
+        {
+            if (planet.GetComponent<Planet>().isPopulated && planet.GetComponent<Population>().population > 1000)
+            {
+                startPlanet = planet;
+                comandStatus = 1;
+            }
+            else if (planet.GetComponent<Planet>().isPopulated && planet.GetComponent<Population>().population < 1000)
+            {
+                Debug.LogError("min. 1000 population Required");
+            }
+        }
+        else if (comandStatus == 1 && planet == startPlanet)
+        {
+            startPlanet = planet;
+            comandStatus = 1;
+        }
+        else if (comandStatus == 1 && planet != startPlanet )
+        {
+
+            destinationPlanet = planet;
+            SendShip();
+            comandStatus = 0;
+        }
+
+
+
+    }
+
+    private void SendShip()
+    {
+        ship = gc.instance.InstantiateShip(gc.instance.prefabColonisationShip, startPlanet.transform.position, startPlanet.transform.rotation);
+        ship.GetComponent<Ship>().destination = destinationPlanet;
+        ship.GetComponent<Ship>().shipType = Ship.ShipType.colony;
+        ship.GetComponent<Ship>().population = 10;
+        startPlanet.GetComponent<Population>().population -= 10;
+
+    }
+}
+
+
+[System.Serializable]
+public class sendTransportationShipComand : Comand
+{
+    GameObject startPlanet;
+    GameObject destinationPlanet;
+
+    GameObject ship;
+
+    public sendTransportationShipComand()
+    {
+
+    }
+
+
+
+    public override void PlanetClicked(GameObject planet)
+    {
+
+        if (comandStatus == 0)
+        {
+            if (planet.GetComponent<Planet>().isPopulated && planet.GetComponent<Population>().population > 2000)
+            {
+                startPlanet = planet;
+                comandStatus = 1;
+            }
+            else
+            {
+                Debug.LogError("min. 2000 Populaton is required");
+            }
+        }
+        else if (comandStatus == 1 && planet == startPlanet)
+        {
+            startPlanet = planet;
+            comandStatus = 1;
+        }
+        else if (comandStatus == 1 && planet != startPlanet && planet.GetComponent<Planet>().isPopulated == false)
+        {            
+            comandStatus = 0;
+            Debug.LogError("not colonized planet");
+        }
+        else if (comandStatus == 1 && planet != startPlanet && planet.GetComponent<Planet>().isPopulated == true)
+        {
+
+            destinationPlanet = planet;
+            SendShip();
+            comandStatus = 0;
+        }
+
+
+
+    }
+
+    private void SendShip()
+    {
+        ship = gc.instance.InstantiateShip(gc.instance.prefabTransportShip, startPlanet.transform.position, startPlanet.transform.rotation);
+        ship.GetComponent<Ship>().destination = destinationPlanet;
+        ship.GetComponent<Ship>().shipType = Ship.ShipType.transport;
+        ship.GetComponent<Ship>().population = 1000;
+        startPlanet.GetComponent<Population>().population -= 1000;
 
     }
 }
