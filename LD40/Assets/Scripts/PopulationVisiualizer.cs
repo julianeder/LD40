@@ -35,7 +35,7 @@ public class PopulationVisiualizer : MonoBehaviour {
         transform.Rotate(Vector3.up, 180f);
 
       
-        pop_text.text = population.GetPopulationString();
+        pop_text.text = Population.GetPopulationString(population.population);
        
         img_act.anchoredPosition = new Vector2((population.population / population.pop_max) * panel_pop_crit.rect.width, img_act.anchoredPosition.y);
 

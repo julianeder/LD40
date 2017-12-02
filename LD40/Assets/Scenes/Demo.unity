@@ -260,7 +260,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 787917400}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b93225924160a7841bd70fcdb6156db5, type: 3}
   m_Name: 
@@ -384,6 +384,24 @@ LineRenderer:
     generateLightingData: 0
   m_UseWorldSpace: 1
   m_Loop: 1
+--- !u!114 &787917405
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 787917400}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c4c4592dbbc2a643898efc9be7a77ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Sun: {fileID: 1304474524}
+  local_rotation_speed: 1
+  local_orbit_speed: 1
+  isExplored: 1
+  isPopulated: 1
+  unexploredGeonometry: {fileID: 953392407}
+  exploredGeonometry: {fileID: 787917400}
 --- !u!1 &953392407
 GameObject:
   m_ObjectHideFlags: 0

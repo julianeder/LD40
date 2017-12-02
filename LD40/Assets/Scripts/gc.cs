@@ -60,6 +60,27 @@ public class gc : MonoBehaviour {
 
     }
 
+    public void btn_Click(int id)
+    {
+        if (id == 0)
+        {
+            Debug.Log("E");
+            selectedComand = new sendExplorationShipComand();
+        }
+
+        if (id == 1)
+        {
+            Debug.Log("C");
+            selectedComand = new sendColonisationShipComand();
+        }
+
+        if (id == 2)
+        {
+            Debug.Log("T");
+            selectedComand = new sendTransportationShipComand();
+        }
+    }
+
     public void PlanetCollided(GameObject planet, GameObject other)
     {
 
@@ -93,6 +114,10 @@ public class gc : MonoBehaviour {
         selectedComand.PlanetClicked(planet);
     }
 
+    public void Lose(GameObject planet)
+    {
+        Debug.Log("Lost");
+    }
 
     public GameObject InstantiateShip(GameObject ship,Vector3 pos,Quaternion rot)
     {

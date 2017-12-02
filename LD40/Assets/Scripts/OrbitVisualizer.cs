@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(LineRenderer))]
-[ExecuteInEditMode]
+//[ExecuteInEditMode]
 public class OrbitVisualizer : MonoBehaviour
 {
 

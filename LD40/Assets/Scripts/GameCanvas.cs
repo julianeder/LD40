@@ -23,12 +23,19 @@ public class GameCanvas : MonoBehaviour {
     #endregion
 
 
+    [Space(10)]
     public GameObject panelPlanetstats;
     public Text TextPlanetName;
     public Text TextPlanetstatsPopulation;
     public Text TextPlanetstatsHabitable;
     public Text TextPlanetstatsGrowth;
 
+    [Space(30)]
+    public Text TextGlobalPopulation;
+    public Text TextTime;
+
+    private float t_sec;
+    private float t_min;
 
     // Use this for initialization
     void Start () {
@@ -37,8 +44,16 @@ public class GameCanvas : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
-	}
+        TextGlobalPopulation.text =  Population.GetPopulationString(Population.GetGlobalPopulation()).ToString();
+        t_sec += Time.deltaTime;
+        if (t_sec > 60)
+        {
+            t_sec = 0;
+            t_min++;
+        }
+
+        TextTime.text = t_min.ToString("00") + ":" + t_sec.ToString("00");
+    }
 
 
 

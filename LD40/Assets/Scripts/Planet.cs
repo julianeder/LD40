@@ -61,7 +61,8 @@ public class Planet : MonoBehaviour {
 
     void OnMouseEnter()
     {
-        GameCanvas.instance.ShowPlanetStats(GetComponent<Population>().GetPopulationString() , true,GetComponent<Population>().Population_Grew_per_sec);
+        Population pop = GetComponent<Population>();
+        GameCanvas.instance.ShowPlanetStats(Population.GetPopulationString(pop.population), true, pop.Population_Grew_per_sec);
     }
 
     void OnMouseExit()

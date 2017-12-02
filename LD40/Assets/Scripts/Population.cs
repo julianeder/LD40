@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class Population : MonoBehaviour {
 
+    public static List<Population> instances = new List<Population>();
+
     public float population = 7000;
 
     public float Population_Grew_per_sec = 1f;
@@ -17,7 +19,7 @@ public class Population : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-		
+        instances.Add(this);
 	}
 	
 	// Update is called once per frame
@@ -30,24 +32,39 @@ public class Population : MonoBehaviour {
         }
 
 
+        if(population >= pop_max)
+        {
+            gc.instance.Lose(gameObject);
+        }
+
 
 	}
 
-    public string GetPopulationString()
+    public static string GetPopulationString(float pop)
     {
-        if (population <= 0)
+        if (pop <= 0)
         {
             return "none";
         }
-        else if (population < 1000)
+        else if (pop < 1000)
         {
-            return Convert.ToInt32(population).ToString() + " Mio.";
+            return Convert.ToInt32(pop).ToString() + " Mio.";
 
         }
         else
         {
-            return (population / 1000).ToString("F1") + " Mrd.";
+            return (pop / 1000).ToString("F1") + " Mrd.";
 
         }
+    }
+
+    public static float GetGlobalPopulation()
+    {
+        float p = 0;
+        foreach (Population item in instances)
+        {
+            p += item.population;
+        }
+        return (p);
     }
 }
