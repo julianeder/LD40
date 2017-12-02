@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class gc : MonoBehaviour {
 
@@ -29,6 +30,7 @@ public class gc : MonoBehaviour {
     public GameObject prefabColonisationShip;
     public GameObject prefabTransportShip;
 
+    public GameObject prefabLeaderboard;
 
 
     // Use this for initialization
@@ -119,7 +121,9 @@ public class gc : MonoBehaviour {
 
     public void Lose(GameObject planet)
     {
-        Debug.Log("Lost");
+        GameObject lb = Instantiate(prefabLeaderboard);
+        lb.GetComponent<Leaderboard>().score = (int)Population.GetGlobalPopulation();
+        SceneManager.LoadScene(1);
     }
 
     public GameObject InstantiateShip(GameObject ship,Vector3 pos,Quaternion rot)

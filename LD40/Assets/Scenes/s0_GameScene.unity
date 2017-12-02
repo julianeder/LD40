@@ -648,6 +648,8 @@ MonoBehaviour:
     type: 2}
   prefabTransportShip: {fileID: 1137035336405848, guid: 05749280a70b16b47a42669ce028c733,
     type: 2}
+  prefabLeaderboard: {fileID: 1975513564255192, guid: 8cc45478133f220488c9072252f55a3a,
+    type: 2}
 --- !u!1 &548960895
 GameObject:
   m_ObjectHideFlags: 0
