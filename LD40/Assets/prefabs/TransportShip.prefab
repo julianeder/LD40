@@ -125,7 +125,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destination: {fileID: 0}
-  speed: 4
+  speed: 10
   shipType: 0
   population: 0
 --- !u!135 &135818855416111590

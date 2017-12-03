@@ -30,7 +30,7 @@ public class News : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        time_till_next_line = Random.Range(2f, 8f);
+        time_till_next_line = Random.Range(3f, 12f);
 	}
 	
 	// Update is called once per frame
@@ -38,7 +38,7 @@ public class News : MonoBehaviour {
 		
         if((time_till_next_line-= Time.deltaTime) < 0)
         {
-            time_till_next_line = Random.Range(2f, 8f);
+            time_till_next_line = Random.Range(3f, 12f);
             if (nextNews == "")
             {
                 ShowRandomNews();

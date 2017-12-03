@@ -85,11 +85,11 @@ public class Planet : MonoBehaviour {
             Population pop = GetComponent<Population>();
             if (isExplored)
             {
-                GameCanvas.instance.ShowPlanetStats(PlanetName, Population.GetPopulationString(pop.population), GetComponent<Population>().isHabitable.ToString(), pop.Population_Grew_per_sec.ToString("F3"));
+                GameCanvas.instance.ShowPlanetStats(PlanetName, Population.GetPopulationString(pop.population), GetComponent<Population>().isHabitable.ToString(), Population.GetPopulationString(GetComponent<Population>().pop_max), pop.Population_Grew_per_sec.ToString("F3"));
             }
             else
             {
-                GameCanvas.instance.ShowPlanetStats("unknown Planet", "-", "-", "-");
+                GameCanvas.instance.ShowPlanetStats("unknown Planet", "-", "-","-", "-");
             }
         }catch(System.Exception ex) { }
 
