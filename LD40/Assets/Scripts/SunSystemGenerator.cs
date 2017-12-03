@@ -18,6 +18,7 @@ public class SunSystemGenerator : MonoBehaviour {
 
     private List<GameObject> planets = new List<GameObject>();
 
+    public bool isDemo = false;
 
     // Use this for initialization
     void Start () {
@@ -88,6 +89,18 @@ public class SunSystemGenerator : MonoBehaviour {
         planets[index].GetComponent<Planet>().isPopulated = true;
         planets[index].GetComponent<Population>().population = planets[index].GetComponent<Population>().pop_max * 0.5f;
 
+
+        if (isDemo)
+        {
+            for (int i = 0; i < planets.Count; i++)
+            {
+                planets[i].GetComponent<Planet>().isExplored = true;
+                planets[i].GetComponent<Planet>().isPopulated = false;
+                //planets[index].GetComponentInChildren<PopulationVisiualizer>().gameObject.SetActive(false);
+
+
+            }
+        }
 
     }
 
