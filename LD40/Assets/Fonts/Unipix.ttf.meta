@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: 6a463d941317e5d4d8cba662e555f2fa
+timeCreated: 1512298380
+licenseType: Free
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Unipix
+  fontNames:
+  - Unipix
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
