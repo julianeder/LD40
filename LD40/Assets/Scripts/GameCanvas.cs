@@ -65,7 +65,14 @@ public class GameCanvas : MonoBehaviour {
         TextPlanetstatsPopulation.text = "Population: " + population;
 
         TextPlanetstatsHabitable.text = "Is habitable: "+ isHabitable;
-        TextPlanetstatsGrowth.text = "Population Growth: " + growth;
+
+        if(System.Convert.ToBoolean(isHabitable))
+            TextPlanetstatsGrowth.text = "Population Growth: " + growth;
+        else
+            TextPlanetstatsGrowth.text = "Population Growth: -";
+
+
+
     }
     public void HidePlanetStats()
     {

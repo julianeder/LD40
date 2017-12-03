@@ -18,8 +18,15 @@ public class GameEndUI : MonoBehaviour {
 
     void Start()
     {
-        leaderboard = GameObject.Find("Leaderboard(Clone)").GetComponent<Leaderboard>();
+        try {
+            leaderboard = GameObject.Find("Leaderboard(Clone)").GetComponent<Leaderboard>();
+
+        }catch(System.Exception ex)
+        {
+            leaderboard = GameObject.Find("Leaderboard").GetComponent<Leaderboard>();
+        }
         leaderboard.AddNewHighscore();
+
 
     }
 
@@ -38,18 +45,20 @@ public class GameEndUI : MonoBehaviour {
         int rank = 1;
         foreach (Highscore hs in highscoresList)
         {
-            txt_rank.text += rank.ToString() + "\n";
+            txt_rank.text += rank.ToString() + ". \n";
             txt_usernames.text += hs.username + "\n";
-            txt_scores.text += hs.score + "\n";
+            txt_scores.text += (System.Convert.ToDouble(hs.score)/1000).ToString("F3") + " Mrd. \n";
 
             if(hs.username == leaderboard.username)
             {
-                txt_rank_you.text += rank.ToString() + "\n";
+                txt_rank_you.text += rank.ToString() + ". \n";
                 txt_usernames_you.text += hs.username + "\n";
-                txt_scores_you.text += hs.score + "\n";
+                txt_scores_you.text += (System.Convert.ToDouble(hs.score) / 1000).ToString("F3") + " Mrd. \n";
             }
 
             rank++;
+
+            if (rank >= 20) break;
             
         }
     }

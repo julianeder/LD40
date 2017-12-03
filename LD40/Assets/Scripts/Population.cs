@@ -6,6 +6,8 @@ using UnityEngine;
 public class Population : MonoBehaviour {
 
     public static List<Population> instances = new List<Population>();
+    public static List<Ship> ships = new List<Ship>();
+
 
     public bool isHabitable = false;
 
@@ -19,6 +21,8 @@ public class Population : MonoBehaviour {
     public float pop_max = 15000;
 
     private bool overcrit = false;
+
+
 
     // Use this for initialization
     void Start () {
@@ -82,6 +86,11 @@ public class Population : MonoBehaviour {
         {
             p += item.population;
         }
+        foreach (Ship item in ships)
+        {
+            p += item.population;
+        }
+
         return (p);
     }
 }

@@ -28,7 +28,7 @@ public class Planet : MonoBehaviour {
     // Use this for initialization
     void Start () {
 
-        Sun = GameObject.FindGameObjectWithTag("Sun").transform;
+        //Sun = GameObject.FindGameObjectWithTag("Sun").transform;
 
 
         if (isExplored)
@@ -72,26 +72,35 @@ public class Planet : MonoBehaviour {
 
     void OnMouseDown()
     {
-        gc.instance.PlanetClicked(gameObject);
+        try { 
+            gc.instance.PlanetClicked(gameObject);
+        }
+        catch (System.Exception ex) { }
+
     }
 
     void OnMouseEnter()
     {
-        Population pop = GetComponent<Population>();
-        if (isExplored)
-        {
-            GameCanvas.instance.ShowPlanetStats(PlanetName, Population.GetPopulationString(pop.population), GetComponent<Population>().isHabitable.ToString(), pop.Population_Grew_per_sec.ToString("F3"));
-        }
-        else
-        {
-            GameCanvas.instance.ShowPlanetStats("unknown Planet", "-", "-", "-");
+        try { 
+            Population pop = GetComponent<Population>();
+            if (isExplored)
+            {
+                GameCanvas.instance.ShowPlanetStats(PlanetName, Population.GetPopulationString(pop.population), GetComponent<Population>().isHabitable.ToString(), pop.Population_Grew_per_sec.ToString("F3"));
+            }
+            else
+            {
+                GameCanvas.instance.ShowPlanetStats("unknown Planet", "-", "-", "-");
+            }
+        }catch(System.Exception ex) { }
 
-        }
     }
 
     void OnMouseExit()
     {
-        GameCanvas.instance.HidePlanetStats();
+        try {
+            GameCanvas.instance.HidePlanetStats();
+        }catch(System.Exception ex) { }
+
     }
 
     void OnTriggerEnter(Collider other)

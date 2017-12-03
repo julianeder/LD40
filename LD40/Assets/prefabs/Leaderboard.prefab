@@ -51,3 +51,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 602c58e152727e74782c115830c302c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  score: 0
+  username: sandro
+  finishedDownload: 0
+  highscoresList: []

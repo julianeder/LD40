@@ -21,7 +21,7 @@ public class CamMover : MonoBehaviour {
         float scr = Input.GetAxis("Mouse ScrollWheel");
 
         transform.Translate(dx,0,dy);
-        cam.fieldOfView += scr * zoom_fact;
+        cam.fieldOfView -= scr * zoom_fact;
 
         cam.fieldOfView = Mathf.Clamp(cam.fieldOfView, 10, 150);
 

@@ -86,30 +86,49 @@ public class gc : MonoBehaviour {
     public void PlanetCollided(GameObject planet, GameObject other)
     {
 
-        if (other.CompareTag("Ship") && other.GetComponent<Ship>().destination == planet)
+        if (planet.CompareTag("Sun") && other.CompareTag("Ship") && other.GetComponent<Ship>().destination == planet)
         {
-            if (other.GetComponent<Ship>().shipType == Ship.ShipType.exploration) {
+            Population.ships.Remove(other.GetComponent<Ship>()); //kill all the people
+            Destroy(other); // Destroy the Ship
+            News.instance.nextNews = "1.000.000 people ppainfully died by Sunburn";
+            News.instance.time_till_next_line = 0.1f;
 
-                planet.GetComponent<Planet>().Explore();
-                News.instance.nextNews = "Discovered Planet " + planet.GetComponent<Planet>().PlanetName;
+        }
+        else {
 
-            }
-            else if (other.GetComponent<Ship>().shipType == Ship.ShipType.colony)
+            if (other.CompareTag("Ship") && other.GetComponent<Ship>().destination == planet)
             {
-                planet.GetComponent<Planet>().isPopulated = true;
-                planet.GetComponent<Population>().population += other.GetComponent<Ship>().population;
-                News.instance.nextNews = "Colonized Planet " + planet.GetComponent<Planet>().PlanetName;
+                if (other.GetComponent<Ship>().shipType == Ship.ShipType.exploration)
+                {
 
+                    planet.GetComponent<Planet>().Explore();
+                    News.instance.nextNews = "Discovered Planet " + planet.GetComponent<Planet>().PlanetName;
+                    News.instance.time_till_next_line = 0.1f;
+
+
+                }
+                else if (other.GetComponent<Ship>().shipType == Ship.ShipType.colony)
+                {
+                    planet.GetComponent<Planet>().isPopulated = true;
+                    planet.GetComponent<Population>().population += other.GetComponent<Ship>().population;
+
+                    Population.ships.Remove(other.GetComponent<Ship>());
+
+                    News.instance.nextNews = "Colonized Planet " + planet.GetComponent<Planet>().PlanetName;
+                    News.instance.time_till_next_line = 0.1f;
+
+                }
+                else if (other.GetComponent<Ship>().shipType == Ship.ShipType.transport)
+                {
+                    planet.GetComponent<Population>().population += other.GetComponent<Ship>().population;
+                    Population.ships.Remove(other.GetComponent<Ship>());
+
+                }
+
+
+
+                Destroy(other);
             }
-            else if (other.GetComponent<Ship>().shipType == Ship.ShipType.transport)
-            {
-                planet.GetComponent<Population>().population += other.GetComponent<Ship>().population;
-            }
-
-
-
-            Destroy(other);
-
         }
 
     }
@@ -119,11 +138,16 @@ public class gc : MonoBehaviour {
         selectedComand.PlanetClicked(planet);
     }
 
+    public void SunClicked(GameObject sun)
+    {
+        selectedComand.SunClicked(sun);
+    }
+
     public void Lose(GameObject planet)
     {
         GameObject lb = Instantiate(prefabLeaderboard);
         lb.GetComponent<Leaderboard>().score = (int)Population.GetGlobalPopulation();
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(2);
     }
 
     public GameObject InstantiateShip(GameObject ship,Vector3 pos,Quaternion rot)
@@ -141,6 +165,7 @@ public class Comand
     public int comandStatus = 0;
 
     public virtual void PlanetClicked(GameObject planet) { }
+    public virtual void SunClicked(GameObject planet) { }
 
 }
 
@@ -217,14 +242,16 @@ public class sendColonisationShipComand : Comand
 
         if (comandStatus == 0)
         {
-            if (planet.GetComponent<Planet>().isPopulated && planet.GetComponent<Population>().population > 1000)
+            if (planet.GetComponent<Planet>().isPopulated && planet.GetComponent<Population>().population > 2000)
             {
                 startPlanet = planet;
                 comandStatus = 1;
             }
-            else if (planet.GetComponent<Planet>().isPopulated && planet.GetComponent<Population>().population < 1000)
+            else if (planet.GetComponent<Planet>().isPopulated && planet.GetComponent<Population>().population < 2000)
             {
-                Debug.LogError("min. 1000 population Required");
+                //Debug.LogError("min. 2000 population Required");
+                News.instance.nextNews = "min. 2 Mrd. Populaton is required to send a Colonisation Ship";
+                News.instance.time_till_next_line = 0.1f;
             }
         }
         else if (comandStatus == 1 && planet == startPlanet)
@@ -243,7 +270,16 @@ public class sendColonisationShipComand : Comand
             else
             {
                 comandStatus = 1;
-                Debug.LogError("Unhabitable or Unexplored Planet");
+                if (!planet.GetComponent<Planet>().isExplored)
+                {
+                    News.instance.nextNews = "Can not colonize unexplored Planet";
+                    News.instance.time_till_next_line = 0.1f;
+                }
+                else
+                {
+                    News.instance.nextNews = "Can not colonize unhabitable Planet";
+                    News.instance.time_till_next_line = 0.1f;
+                }
 
 
             }
@@ -260,6 +296,7 @@ public class sendColonisationShipComand : Comand
         ship.GetComponent<Ship>().shipType = Ship.ShipType.colony;
         ship.GetComponent<Ship>().population = 10;
         startPlanet.GetComponent<Population>().population -= 10;
+        Population.ships.Add(ship.GetComponent<Ship>());
 
     }
 }
@@ -292,7 +329,9 @@ public class sendTransportationShipComand : Comand
             }
             else
             {
-                Debug.LogError("min. 2000 Populaton is required");
+                //Debug.LogError("min. 2000 Populaton is required");
+                News.instance.nextNews = "min. 2 Mrd. Populaton is required to send a Transport Ship";
+                News.instance.time_till_next_line = 0.1f;
             }
         }
         else if (comandStatus == 1 && planet == startPlanet)
@@ -303,7 +342,10 @@ public class sendTransportationShipComand : Comand
         else if (comandStatus == 1 && planet != startPlanet && planet.GetComponent<Planet>().isPopulated == false)
         {            
             comandStatus = 0;
-            Debug.LogError("not colonized planet");
+            //Debug.LogError("not colonized planet");
+            News.instance.nextNews = "Not colonized planet";
+            News.instance.time_till_next_line = 0.1f;
+
         }
         else if (comandStatus == 1 && planet != startPlanet && planet.GetComponent<Planet>().isPopulated == true)
         {
@@ -325,6 +367,32 @@ public class sendTransportationShipComand : Comand
         ship.GetComponent<Ship>().shipType = Ship.ShipType.transport;
         ship.GetComponent<Ship>().population = 1000;
         startPlanet.GetComponent<Population>().population -= 1000;
+        Population.ships.Add(ship.GetComponent<Ship>());
+
 
     }
+
+    public override void SunClicked(GameObject sun)
+    {
+
+        if (comandStatus == 0)
+        {
+
+        }
+        else if (comandStatus == 1)
+        {
+            News.instance.nextNews = "Killing People by Sending them into the Sun is Dangerous";
+            News.instance.time_till_next_line = 0.1f;
+
+
+            destinationPlanet = sun;
+            SendShip();
+            comandStatus = 0;
+
+        }
+
+
+
+    }
+
 }

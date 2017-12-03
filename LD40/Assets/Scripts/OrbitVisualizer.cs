@@ -10,13 +10,13 @@ public class OrbitVisualizer : MonoBehaviour
 
     public int stepCount;
 
-    Transform sun;
+    public Transform Sun;
 
     LineRenderer lineRenderer;
 
     private void Start()
     {
-        sun = GameObject.FindGameObjectWithTag("Sun").transform;
+        //Sun = GameObject.FindGameObjectWithTag("Sun").transform;
 
         lineRenderer = GetComponent<LineRenderer>();
     }
@@ -27,11 +27,11 @@ public class OrbitVisualizer : MonoBehaviour
 
         lineRenderer.positionCount = stepCount;
 
-        float offsetAngle = Mathf.Atan2(transform.position.z - sun.position.z, transform.position.x - sun.position.x) * Mathf.Rad2Deg;
+        float offsetAngle = Mathf.Atan2(transform.position.z - Sun.position.z, transform.position.x - Sun.position.x) * Mathf.Rad2Deg;
 
         for (int i = 0; i < stepCount; i++)
         {
-            lineRenderer.SetPosition(i, AngleToPosition(i * (360f / (float)stepCount) + offsetAngle) * Vector3.Distance(sun.position, transform.position));
+            lineRenderer.SetPosition(i, AngleToPosition(i * (360f / (float)stepCount) + offsetAngle) * Vector3.Distance(Sun.position, transform.position));
         }
 
 
