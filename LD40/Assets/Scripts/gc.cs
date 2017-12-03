@@ -123,7 +123,7 @@ public class gc : MonoBehaviour {
     {
         GameObject lb = Instantiate(prefabLeaderboard);
         lb.GetComponent<Leaderboard>().score = (int)Population.GetGlobalPopulation();
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(2);
     }
 
     public GameObject InstantiateShip(GameObject ship,Vector3 pos,Quaternion rot)

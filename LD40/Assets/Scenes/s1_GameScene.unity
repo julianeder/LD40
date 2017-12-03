@@ -1125,7 +1125,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Explore
+  m_Text: Explore (E)
 --- !u!222 &1011916775
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1199,7 +1199,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Transport
+  m_Text: Transport (T)
 --- !u!222 &1148847644
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1977,7 +1977,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Colonize
+  m_Text: Colonize (C)
 --- !u!222 &1954995561
 CanvasRenderer:
   m_ObjectHideFlags: 0
