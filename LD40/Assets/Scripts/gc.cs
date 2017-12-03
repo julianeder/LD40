@@ -32,10 +32,18 @@ public class gc : MonoBehaviour {
 
     public GameObject prefabLeaderboard;
 
+    public AudioClip ExplorationSoundEffect;
+    public AudioClip ColonisationSoundEffect;
+
+    public string username;
 
     // Use this for initialization
     void Start () {
-		
+        try {
+            username = GameObject.Find("MainMenue").GetComponent<MainMenue>().username;
+            Destroy(GameObject.Find("MainMenue"));
+        }
+        catch (System.Exception) { }
 	}
 	
 	// Update is called once per frame
@@ -57,6 +65,11 @@ public class gc : MonoBehaviour {
         {
             Debug.Log("T");
             selectedComand = new sendTransportationShipComand();
+        }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            SceneManager.LoadScene(0);
         }
 
 
@@ -86,11 +99,11 @@ public class gc : MonoBehaviour {
     public void PlanetCollided(GameObject planet, GameObject other)
     {
 
-        if (planet.CompareTag("Sun") && other.CompareTag("Ship") && other.GetComponent<Ship>().destination == planet)
+        if (planet.CompareTag("Sun") && other.CompareTag("Ship"))
         {
             Population.ships.Remove(other.GetComponent<Ship>()); //kill all the people
             Destroy(other); // Destroy the Ship
-            News.instance.nextNews = "1.000.000 people ppainfully died by Sunburn";
+            News.instance.nextNews = other.GetComponent<Ship>().population + " people ppainfully died by Sunburn";
             News.instance.time_till_next_line = 0.1f;
 
         }
@@ -105,12 +118,18 @@ public class gc : MonoBehaviour {
                     News.instance.nextNews = "Discovered Planet " + planet.GetComponent<Planet>().PlanetName;
                     News.instance.time_till_next_line = 0.1f;
 
+                    GetComponent<AudioSource>().clip = ExplorationSoundEffect;
+                    GetComponent<AudioSource>().Play();
+
 
                 }
                 else if (other.GetComponent<Ship>().shipType == Ship.ShipType.colony)
                 {
                     planet.GetComponent<Planet>().isPopulated = true;
                     planet.GetComponent<Population>().population += other.GetComponent<Ship>().population;
+
+                    GetComponent<AudioSource>().clip = ColonisationSoundEffect;
+                    GetComponent<AudioSource>().Play();
 
                     Population.ships.Remove(other.GetComponent<Ship>());
 
@@ -146,6 +165,7 @@ public class gc : MonoBehaviour {
     public void Lose(GameObject planet)
     {
         GameObject lb = Instantiate(prefabLeaderboard);
+        lb.GetComponent<Leaderboard>().username = username;
         lb.GetComponent<Leaderboard>().score = (int)Population.GetGlobalPopulation();
         SceneManager.LoadScene(2);
     }
@@ -216,6 +236,8 @@ public class sendExplorationShipComand : Comand
     {
         ship =  gc.instance.InstantiateShip(gc.instance.prefabExplorationShip, startPlanet.transform.position, startPlanet.transform.rotation);
         ship.GetComponent<Ship>().destination = destinationPlanet;
+        ship.GetComponent<Ship>().population = 5;
+
         ship.GetComponent<Ship>().shipType = Ship.ShipType.exploration;
 
     }

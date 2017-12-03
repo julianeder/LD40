@@ -523,6 +523,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stepCount: 32
+  Sun: {fileID: 0}
 --- !u!114 &114099065834785416
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -534,6 +535,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c4c4592dbbc2a643898efc9be7a77ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlanetName: <name>
   Sun: {fileID: 0}
   local_rotation_speed: 5
   local_orbit_speed: 1
@@ -552,6 +554,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77cd580f55bad6d448976c154459ae31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isHabitable: 0
   population: 0
   Population_Grew_per_sec: 1
   pop_crit: 8000
@@ -617,6 +620,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   population: {fileID: 114153616346353042}
   mainCam: {fileID: 0}
+  isActive: 1
   pop_text: {fileID: 114619629021932136}
   panel_pop_crit: {fileID: 224033930377120274}
   img_green: {fileID: 224631160586726608}
@@ -848,7 +852,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 1
+  m_Radius: 3
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!222 &222149997550670974
 CanvasRenderer:

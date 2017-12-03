@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.092398204, g: 0.13978574, b: 0.22608644, a: 1}
+  m_IndirectSpecularColor: {r: 0.039159596, g: 0.4384676, b: 0.5436885, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -248,6 +248,10 @@ MonoBehaviour:
   - You lose if a Planet gets overpopulated
   - People can not survive on unhabitable Planets
   - 10 Mrd. is the worst score
+  - Overpopulation can lead to spontaneous game lose syndrom
+  - Puh... so many people here
+  - a nuclear war might reduce your population... or your popularity
+  - hmm.... hm... hmmm...
   txt_news: {fileID: 1381488251}
   time_till_next_line: 0
   nextNews: 
@@ -300,6 +304,7 @@ GameObject:
   - component: {fileID: 288904701}
   - component: {fileID: 288904700}
   - component: {fileID: 288904699}
+  - component: {fileID: 288904702}
   m_Layer: 0
   m_Name: Sun
   m_TagString: Sun
@@ -359,6 +364,86 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 2.11
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!82 &288904702
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 288904697}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 10b3834479dd6a04fbc977fbeb75cb50, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!1 &310701544
 GameObject:
   m_ObjectHideFlags: 0
@@ -390,13 +475,14 @@ RectTransform:
   - {fileID: 1882075038}
   - {fileID: 471855946}
   - {fileID: 1234572138}
+  - {fileID: 586680068}
   m_Father: {fileID: 1288852503}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 454.2, y: 455.9}
+  m_SizeDelta: {x: 553.7, y: 364.9}
   m_Pivot: {x: 1, y: 0}
 --- !u!114 &310701546
 MonoBehaviour:
@@ -410,7 +496,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.01708479, g: 0.06763201, b: 0.5808823, a: 0.392}
+  m_Color: {r: 0, g: 0.042190548, b: 0.4705882, a: 0.241}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -517,7 +603,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 471855945}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -411.2, y: 296.9, z: 0}
+  m_LocalPosition: {x: -510.7, y: 205.9, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 310701545}
@@ -526,7 +612,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 43, y: -159}
-  m_SizeDelta: {x: 390.5, y: 36}
+  m_SizeDelta: {x: 464.7, y: 36}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &471855947
 MonoBehaviour:
@@ -610,8 +696,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Sun: {fileID: 288904698}
-  seed: 2
-  planetCount: 7
+  seed: 4
+  planetCount: 12
   probapilityHabitable: 0.5
   prefab_planet: {fileID: 1533742171177508, guid: c0b5ec4644879f84889cc5cf46561bc5,
     type: 2}
@@ -619,10 +705,14 @@ MonoBehaviour:
   - {r: 0.28330448, g: 0.85069495, b: 0.9632353, a: 1}
   - {r: 0, g: 0.42068958, b: 1, a: 1}
   - {r: 0.0184905, g: 0.19374622, b: 0.83823526, a: 1}
+  - {r: 0.923, g: 0, b: 0, a: 1}
+  - {r: 0.875, g: 0, b: 0.85086226, a: 1}
   mountainColor:
   - {r: 0.43382353, g: 0.43382353, b: 0.43382353, a: 0}
   - {r: 0.653, g: 0, b: 0, a: 0}
   - {r: 0, g: 0.875, b: 0.1508621, a: 0}
+  - {r: 0.2591912, g: 0.375, b: 0.27915823, a: 0}
+  - {r: 0.8235294, g: 0.51349485, b: 0.048442904, a: 0}
   planetNames:
   - Alpha
   - Beta
@@ -633,7 +723,12 @@ MonoBehaviour:
   - Jupiter
   - Uranius
   - Mono
-  - 7
+  - Sandro
+  - '@J33'
+  - StackOverflow
+  - Cybnon
+  - Lumina
+  - Minius
 --- !u!1 &524406416
 GameObject:
   m_ObjectHideFlags: 0
@@ -643,6 +738,7 @@ GameObject:
   m_Component:
   - component: {fileID: 524406417}
   - component: {fileID: 524406418}
+  - component: {fileID: 524406419}
   m_Layer: 0
   m_Name: gc
   m_TagString: Untagged
@@ -684,6 +780,91 @@ MonoBehaviour:
     type: 2}
   prefabLeaderboard: {fileID: 1975513564255192, guid: 8cc45478133f220488c9072252f55a3a,
     type: 2}
+  ExplorationSoundEffect: {fileID: 8300000, guid: 735cc7779a4f53e4181e139f661bbe15,
+    type: 3}
+  ColonisationSoundEffect: {fileID: 8300000, guid: fbc8ecb43c26a8c4099b4fa688042644,
+    type: 3}
+  username: 
+--- !u!82 &524406419
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 524406416}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!1 &548960895
 GameObject:
   m_ObjectHideFlags: 0
@@ -777,6 +958,80 @@ Transform:
   m_Father: {fileID: 1637412940}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 34.141003, y: 0, z: 0}
+--- !u!1 &586680067
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 586680068}
+  - component: {fileID: 586680070}
+  - component: {fileID: 586680069}
+  m_Layer: 5
+  m_Name: txt_populationGrowth
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &586680068
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 586680067}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -510.7, y: 97.899994, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 310701545}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 43, y: -267}
+  m_SizeDelta: {x: 464.7, y: 39.1}
+  m_Pivot: {x: 0, y: 1}
+--- !u!114 &586680069
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 586680067}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: 8c8fac3d92c170247b8752cd5058a193, type: 3}
+    m_FontSize: 23
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 2
+    m_MaxSize: 70
+    m_Alignment: 3
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 'Population Growth: 1.01'
+--- !u!222 &586680070
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 586680067}
 --- !u!1 &680402466
 GameObject:
   m_ObjectHideFlags: 0
@@ -812,7 +1067,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 280, y: 60}
+  m_SizeDelta: {x: 348.5, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &680402468
 MonoBehaviour:
@@ -834,8 +1089,8 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_HighlightedColor: {r: 0.28676468, g: 0.28676468, b: 0.28676468, a: 1}
+    m_PressedColor: {r: 0.875, g: 0.875, b: 0.875, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -885,8 +1140,8 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 019af89336b31e64291b0240d0484917, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -924,7 +1179,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 945784203}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 801.15, y: 49.5, z: 0}
+  m_LocalPosition: {x: 782.05, y: 49.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1148847642}
@@ -933,8 +1188,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 319, y: 0}
-  m_SizeDelta: {x: 280, y: 60}
+  m_AnchoredPosition: {x: 299.9, y: 0}
+  m_SizeDelta: {x: 348.5, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &945784205
 MonoBehaviour:
@@ -956,8 +1211,8 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_HighlightedColor: {r: 0.33823532, g: 0.33823532, b: 0.33823532, a: 1}
+    m_PressedColor: {r: 0.8455882, g: 0.8455882, b: 0.8455882, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -1007,8 +1262,8 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 019af89336b31e64291b0240d0484917, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -1071,7 +1326,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.204}
+  m_Color: {r: 0, g: 0.13133866, b: 0.5147059, a: 0.209}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -1139,7 +1394,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -1213,7 +1468,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -1251,7 +1506,7 @@ GameObject:
   - component: {fileID: 1234572140}
   - component: {fileID: 1234572139}
   m_Layer: 5
-  m_Name: txt_populationGrowth
+  m_Name: txt_populationMax
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1264,7 +1519,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1234572137}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -411.2, y: 241.5, z: 0}
+  m_LocalPosition: {x: -510.7, y: 150.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 310701545}
@@ -1273,7 +1528,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 43, y: -214.4}
-  m_SizeDelta: {x: 390.5, y: 39.1}
+  m_SizeDelta: {x: 464.7, y: 39.1}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1234572139
 MonoBehaviour:
@@ -1307,7 +1562,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Population Growth: 1.01'
+  m_Text: 'Population Maximum: 10 Mrd.'
 --- !u!222 &1234572140
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1403,7 +1658,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1286099627}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -434.15002, y: 435.40002, z: 0}
+  m_LocalPosition: {x: -533.65, y: 344.40002, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 310701545}
@@ -1412,7 +1667,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 20.049988, y: -20.5}
-  m_SizeDelta: {x: 366.5, y: 66.2}
+  m_SizeDelta: {x: 487.65, y: 66.2}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1286099629
 MonoBehaviour:
@@ -1487,6 +1742,7 @@ MonoBehaviour:
   TextPlanetName: {fileID: 1286099629}
   TextPlanetstatsPopulation: {fileID: 1882075039}
   TextPlanetstatsHabitable: {fileID: 471855947}
+  TextPlanetstatsMaxPop: {fileID: 1234572139}
   TextPlanetstatsGrowth: {fileID: 1234572139}
   TextGlobalPopulation: {fileID: 1999142078}
   TextTime: {fileID: 33687975}
@@ -1692,7 +1948,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0.059736297, b: 0.2794118, a: 0.392}
+  m_Color: {r: 0, g: 0.059736297, b: 0.2794118, a: 0.178}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -1867,6 +2123,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 82603759002442206, guid: 3e77434dc3da1f247962eb026058a5a0,
+        type: 2}
+      propertyPath: m_Volume
+      value: 0.6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3e77434dc3da1f247962eb026058a5a0, type: 2}
   m_IsPrefabParent: 0
@@ -1894,7 +2155,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1882075037}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -411.2, y: 351.9, z: 0}
+  m_LocalPosition: {x: -510.7, y: 260.9, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 310701545}
@@ -1903,7 +2164,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 43, y: -104}
-  m_SizeDelta: {x: 390.5, y: 36}
+  m_SizeDelta: {x: 464.7, y: 36}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1882075039
 MonoBehaviour:
@@ -1991,7 +2252,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -2173,7 +2434,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2028414520}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 163.15, y: 49.5, z: 0}
+  m_LocalPosition: {x: 183.44998, y: 49.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1011916773}
@@ -2182,8 +2443,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -319, y: 0}
-  m_SizeDelta: {x: 280, y: 60}
+  m_AnchoredPosition: {x: -298.7, y: 0}
+  m_SizeDelta: {x: 348.5, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2028414522
 MonoBehaviour:
@@ -2205,9 +2466,9 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_HighlightedColor: {r: 0.3897059, g: 0.3897059, b: 0.3897059, a: 1}
+    m_PressedColor: {r: 0.8088235, g: 0.8088235, b: 0.8088235, a: 1}
+    m_DisabledColor: {r: 0.1544118, g: 0.1544118, b: 0.1544118, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -2256,8 +2517,8 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 019af89336b31e64291b0240d0484917, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4

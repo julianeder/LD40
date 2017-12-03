@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameEndUI : MonoBehaviour {
@@ -61,5 +62,11 @@ public class GameEndUI : MonoBehaviour {
             if (rank >= 20) break;
             
         }
+    }
+
+
+    public void ReturnToMainMenue()
+    {
+        SceneManager.LoadScene(0);
     }
 }

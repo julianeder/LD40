@@ -18,6 +18,7 @@ public class SunSystemGenerator : MonoBehaviour {
 
     private List<GameObject> planets = new List<GameObject>();
 
+    public bool isDemo = false;
 
     // Use this for initialization
     void Start () {
@@ -47,7 +48,7 @@ public class SunSystemGenerator : MonoBehaviour {
 
             planet.transform.localScale = Vector3.one * size;
 
-            planet.GetComponent<Planet>().local_orbit_speed = (1 / size) * 3f;
+            planet.GetComponent<Planet>().local_orbit_speed = (1 / size) * 3f * (1/(i+1)) ;
 
             planet.GetComponent<Planet>().local_rotation_speed = (1 / size) * 3f;
 
@@ -58,13 +59,17 @@ public class SunSystemGenerator : MonoBehaviour {
             if (Random.value < probapilityHabitable)
             {
                 planet.GetComponent<Population>().isHabitable = true;
+                planet.GetComponent<Population>().Population_Grew_per_sec = Random.Range(1.005f, 1.02f);
+
+                planet.GetComponent<Population>().pop_max = Random.Range(7000f, 20000f) * size * planet.GetComponent<Population>().Population_Grew_per_sec;
+                planet.GetComponent<Population>().pop_crit = planet.GetComponent<Population>().pop_max * 0.8f;
+
             }
             else
             {
                 planet.GetComponent<Population>().isHabitable = false;
             }
 
-            planet.GetComponent<Population>().Population_Grew_per_sec = Random.Range(0.999f, 1.005f);
 
             planet.transform.Find("explored").Find("expl_mountain").GetComponent<MeshRenderer>().material.color = mountainColor[Random.Range(0,mountainColor.Count)];
             planet.transform.Find("explored").Find("expl_water").GetComponent<MeshRenderer>().material.color = waterColor[Random.Range(0, mountainColor.Count)];
@@ -78,12 +83,24 @@ public class SunSystemGenerator : MonoBehaviour {
         do
         {
             index = Random.Range(0, planetCount);
-        } while (!planets[index].GetComponent<Population>().isHabitable);
+        } while (!planets[index].GetComponent<Population>().isHabitable || (planets[index].GetComponent<Population>().pop_max < 6000));
 
         planets[index].GetComponent<Planet>().isExplored = true;
         planets[index].GetComponent<Planet>().isPopulated = true;
-        planets[index].GetComponent<Population>().population = 7000;
+        planets[index].GetComponent<Population>().population = planets[index].GetComponent<Population>().pop_max * 0.5f;
 
+
+        if (isDemo)
+        {
+            for (int i = 0; i < planets.Count; i++)
+            {
+                planets[i].GetComponent<Planet>().isExplored = true;
+                planets[i].GetComponent<Planet>().isPopulated = false;
+                //planets[index].GetComponentInChildren<PopulationVisiualizer>().gameObject.SetActive(false);
+
+
+            }
+        }
 
     }
 

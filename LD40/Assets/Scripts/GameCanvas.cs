@@ -28,6 +28,7 @@ public class GameCanvas : MonoBehaviour {
     public Text TextPlanetName;
     public Text TextPlanetstatsPopulation;
     public Text TextPlanetstatsHabitable;
+    public Text TextPlanetstatsMaxPop;
     public Text TextPlanetstatsGrowth;
 
     [Space(30)]
@@ -57,21 +58,25 @@ public class GameCanvas : MonoBehaviour {
 
 
 
-    public void ShowPlanetStats(string planetName,string population,string isHabitable,string growth)
+    public void ShowPlanetStats(string planetName, string population, string isHabitable, string max_pop, string growth)
     {
         panelPlanetstats.SetActive(true);
 
         TextPlanetName.text = planetName;
         TextPlanetstatsPopulation.text = "Population: " + population;
 
-        TextPlanetstatsHabitable.text = "Is habitable: "+ isHabitable;
+        TextPlanetstatsHabitable.text = "Is habitable: " + isHabitable;
 
-        if(System.Convert.ToBoolean(isHabitable))
+        if (System.Convert.ToBoolean(isHabitable)) {
+
             TextPlanetstatsGrowth.text = "Population Growth: " + growth;
-        else
+            TextPlanetstatsMaxPop.text = "Population Maximum: " + max_pop;
+
+        }
+        else {
+
             TextPlanetstatsGrowth.text = "Population Growth: -";
-
-
+        }
 
     }
     public void HidePlanetStats()
