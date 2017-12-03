@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class SunSystemGenerator : MonoBehaviour {
 
+    public Transform Sun;
+
     public int seed;
     public int planetCount = 9;
     public float probapilityHabitable = 0.5f;
@@ -49,7 +51,11 @@ public class SunSystemGenerator : MonoBehaviour {
 
             planet.GetComponent<Planet>().local_rotation_speed = (1 / size) * 3f;
 
-            if(Random.value < probapilityHabitable)
+            planet.GetComponent<Planet>().Sun = Sun;
+            planet.GetComponent<OrbitVisualizer>().Sun = Sun;
+
+
+            if (Random.value < probapilityHabitable)
             {
                 planet.GetComponent<Population>().isHabitable = true;
             }

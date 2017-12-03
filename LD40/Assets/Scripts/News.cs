@@ -24,21 +24,21 @@ public class News : MonoBehaviour {
 
     public Text txt_news;
 
-    float t;
+    public float time_till_next_line;
 
     public string nextNews = "";
 
     // Use this for initialization
     void Start () {
-        t = Random.Range(2f, 8f);
+        time_till_next_line = Random.Range(2f, 8f);
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		
-        if((t-= Time.deltaTime) < 0)
+        if((time_till_next_line-= Time.deltaTime) < 0)
         {
-            t = Random.Range(2f, 8f);
+            time_till_next_line = Random.Range(2f, 8f);
             if (nextNews == "")
             {
                 ShowRandomNews();

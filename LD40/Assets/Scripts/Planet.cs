@@ -28,7 +28,7 @@ public class Planet : MonoBehaviour {
     // Use this for initialization
     void Start () {
 
-        Sun = GameObject.FindGameObjectWithTag("Sun").transform;
+        //Sun = GameObject.FindGameObjectWithTag("Sun").transform;
 
 
         if (isExplored)
@@ -90,7 +90,6 @@ public class Planet : MonoBehaviour {
             else
             {
                 GameCanvas.instance.ShowPlanetStats("unknown Planet", "-", "-", "-");
-
             }
         }catch(System.Exception ex) { }
 
