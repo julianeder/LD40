@@ -32,6 +32,9 @@ public class gc : MonoBehaviour {
 
     public GameObject prefabLeaderboard;
 
+    public AudioClip ExplorationSoundEffect;
+    public AudioClip ColonisationSoundEffect;
+
 
     // Use this for initialization
     void Start () {
@@ -105,12 +108,18 @@ public class gc : MonoBehaviour {
                     News.instance.nextNews = "Discovered Planet " + planet.GetComponent<Planet>().PlanetName;
                     News.instance.time_till_next_line = 0.1f;
 
+                    GetComponent<AudioSource>().clip = ExplorationSoundEffect;
+                    GetComponent<AudioSource>().Play();
+
 
                 }
                 else if (other.GetComponent<Ship>().shipType == Ship.ShipType.colony)
                 {
                     planet.GetComponent<Planet>().isPopulated = true;
                     planet.GetComponent<Population>().population += other.GetComponent<Ship>().population;
+
+                    GetComponent<AudioSource>().clip = ColonisationSoundEffect;
+                    GetComponent<AudioSource>().Play();
 
                     Population.ships.Remove(other.GetComponent<Ship>());
 

@@ -17,6 +17,7 @@ public class Sun : MonoBehaviour {
     void OnTriggerEnter(Collider other)
     {
         gc.instance.PlanetCollided(gameObject, other.gameObject);
+        GetComponent<AudioSource>().Play();
 
     }
 }
