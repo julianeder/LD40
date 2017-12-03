@@ -105,8 +105,10 @@ public class Planet : MonoBehaviour {
 
     void OnTriggerEnter(Collider other)
     {
-        gc.instance.PlanetCollided(gameObject,other.gameObject);
-
+        try {
+            gc.instance.PlanetCollided(gameObject, other.gameObject);
+        }
+        catch (System.Exception) { }
     }
 
     public void Explore()

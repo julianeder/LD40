@@ -58,7 +58,7 @@ public class SunSystemGenerator : MonoBehaviour {
             if (Random.value < probapilityHabitable)
             {
                 planet.GetComponent<Population>().isHabitable = true;
-                planet.GetComponent<Population>().Population_Grew_per_sec = Random.Range(0.999f, 1.007f);
+                planet.GetComponent<Population>().Population_Grew_per_sec = Random.Range(1.005f, 1.02f);
 
                 planet.GetComponent<Population>().pop_max = Random.Range(7000f, 20000f) * size * planet.GetComponent<Population>().Population_Grew_per_sec;
                 planet.GetComponent<Population>().pop_crit = planet.GetComponent<Population>().pop_max * 0.8f;
